@@ -1,0 +1,16 @@
+# Database
+DB_HOST: localhost
+DB_PASSWORD: mealmate_dev_password
+DB_NAME: mealmate
+DB_USER: mealmate_dev
+DB_PORT: 5432
+
+# Redis
+REDIS_HOST: localhost
+
+# JWT
+JWT_SECRET: supersecret
+JWT_SIGN_OPTION:
+  expiresIn: '2343h'
+
+DOMAIN_URL: http://localhost:3000/api/v1

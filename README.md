@@ -2,6 +2,11 @@
 
 MealMate is a web application that helps users to find nearby restaurants and order food online. It also allows users to create and join meal groups where they can share their favorite dishes with others.
 
+## Database Schema
+
+The schema of the database is inside `/dbschema` directory
+![mealmate dbschema](./dbschema//meal-mate.png)
+
 ## Features
 
 - User authentication and authorization

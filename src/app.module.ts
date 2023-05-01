@@ -8,6 +8,9 @@ import { DishModule } from './dish/dish.module';
 import { MemberModule } from './member/member.module';
 import { MealGroupModule } from './meal-group/meal-group.module';
 import { AuthModule } from './auth/auth.module';
+import { OrderModule } from './order/order.module';
+import { OrderBillModule } from './order-bill/order-bill.module';
+import { MemberBillShareModule } from './member-bill-share/member-bill-share.module';
 
 @Module({
   imports: [
@@ -36,6 +39,9 @@ import { AuthModule } from './auth/auth.module';
     MemberModule,
     MealGroupModule,
     AuthModule,
+    OrderModule,
+    OrderBillModule,
+    MemberBillShareModule,
   ],
 })
 export class AppModule {}

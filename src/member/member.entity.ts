@@ -1,5 +1,6 @@
 import { User } from 'src/auth/user.entity';
 import { MealGroupMember } from 'src/meal-group/meal-group-member.entity';
+import { MemberBillShare } from 'src/member-bill-share/member-bill-share.entity';
 import {
   Column,
   CreateDateColumn,
@@ -25,6 +26,9 @@ export class Member {
 
   @OneToMany(() => MealGroupMember, (mealGroupMember) => mealGroupMember.member)
   mealGroups: MealGroupMember[];
+
+  @OneToMany(() => MemberBillShare, (memberBillShare) => memberBillShare.member)
+  memberBillShares: MemberBillShare[];
 
   @Column()
   name: string;

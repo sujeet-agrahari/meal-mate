@@ -27,7 +27,6 @@ export class CreateDishDto {
   name: string;
 
   @ApiProperty()
-  @IsNotEmpty()
   @IsDecimal({ decimal_digits: '10,2' })
   @Min(0.0, { message: 'Price must be at least 0.0' })
   @Max(999999999999.99, {

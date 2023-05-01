@@ -1,11 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsDate,
   IsDecimal,
+  IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
-  IsUUID,
   IsUrl,
   Matches,
   Max,
@@ -16,23 +15,19 @@ import {
 
 export class CreateRestaurantDto {
   @ApiProperty()
-  @IsOptional()
-  @IsUUID()
-  id?: string;
-
-  @ApiProperty()
   @IsString()
-  @MinLength(3, { message: 'Restaurant name is too short' })
-  @MaxLength(20, { message: 'Restaurant name is too long' })
+  @MinLength(3, { message: 'restaurant name is too short' })
+  @MaxLength(20, { message: 'restaurant name is too long' })
   name: string;
 
   @ApiProperty()
-  @MinLength(10, { message: 'Address is too short' })
+  @MinLength(10, { message: 'address is too short' })
   @IsString()
   address: string;
 
   @ApiProperty()
-  @Matches(/^[6-9]\d{9}$/, { message: 'Invalid phone number' })
+  @IsNotEmpty()
+  @Matches(/^[6-9]\d{9}$/, { message: 'invalid phone number' })
   phone: string;
 
   @ApiProperty()
@@ -40,21 +35,12 @@ export class CreateRestaurantDto {
   website: string;
 
   @ApiProperty()
-  @IsNumber()
-  @IsDecimal({ decimal_digits: '1,2' })
-  @Min(0.0, { message: 'Rating must be at least 0.0' })
-  @Max(5.0, { message: 'Rating can not be greater than 5' })
+  @IsNumber({ maxDecimalPlaces: 1 })
+  @Min(0.0, { message: 'rating must be at least 0.0' })
+  @Max(5.0, { message: 'rating can not be greater than 5' })
   rating: number;
 
   @ApiProperty()
   @IsString()
   description?: string;
-
-  @ApiProperty()
-  @IsDate()
-  createdAt?: Date;
-
-  @ApiProperty()
-  @IsDate()
-  updatedAt: Date;
 }

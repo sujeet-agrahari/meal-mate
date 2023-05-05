@@ -16,7 +16,7 @@ export class Member {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'uuid', nullable: true })
   userId: string;
 
   // Define one-to-one relation with User

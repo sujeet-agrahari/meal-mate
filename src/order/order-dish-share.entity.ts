@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -18,7 +19,7 @@ export class OrderDishShare {
   orderDishId: string;
 
   @ManyToOne(() => OrderDish, (orderDish) => orderDish.orderDishShares)
-  orderDishes: OrderDish[];
+  orderDish: OrderDish;
 
   @Column({ type: 'uuid' })
   memberId: string;

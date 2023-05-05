@@ -21,8 +21,11 @@ export class DishService {
     });
   }
 
-  async createRestaurantDish(dish: CreateDishDto): Promise<Dish> {
-    return this.dishRepository.save(dish);
+  async createRestaurantDish(
+    restaurantId: string,
+    dish: CreateDishDto,
+  ): Promise<Dish> {
+    return this.dishRepository.save({ restaurantId, ...dish });
   }
 
   async gerRestaurantDish(dishId: string, restaurantId: string): Promise<Dish> {

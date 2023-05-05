@@ -16,22 +16,19 @@ export class OrderDish {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   orderId: string;
 
   @ManyToOne(() => Order, (order) => order.orderDishes)
   order: Order;
 
-  @Column()
+  @Column({ type: 'uuid' })
   dishId: string;
 
   @ManyToOne(() => Dish)
   dish: Dish;
 
-  @OneToMany(
-    () => OrderDishShare,
-    (orderDishShare) => orderDishShare.orderDishes,
-  )
+  @OneToMany(() => OrderDishShare, (orderDishShare) => orderDishShare.orderDish)
   orderDishShares: OrderDishShare[];
 
   @Column()

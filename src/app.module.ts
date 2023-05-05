@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { OrderModule } from './order/order.module';
 import { OrderBillModule } from './order-bill/order-bill.module';
 import { MemberBillShareModule } from './member-bill-share/member-bill-share.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { MemberBillShareModule } from './member-bill-share/member-bill-share.mod
     OrderModule,
     OrderBillModule,
     MemberBillShareModule,
+    SharedModule,
   ],
 })
 export class AppModule {}

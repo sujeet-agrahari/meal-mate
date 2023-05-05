@@ -16,8 +16,11 @@ export class DishController {
   }
 
   @Post()
-  async createRestaurantDish(@Body() dish: CreateDishDto): Promise<Dish> {
-    return this.dishService.createRestaurantDish(dish);
+  async createRestaurantDish(
+    @Param('restaurantId') restaurantId: string,
+    @Body() dish: CreateDishDto,
+  ): Promise<Dish> {
+    return this.dishService.createRestaurantDish(restaurantId, dish);
   }
 
   @Get('/:dishId')

@@ -35,7 +35,7 @@ export class Dish {
   @ManyToOne(() => Restaurant, (restaurant) => restaurant.dishes)
   restaurant: Restaurant;
 
-  @Column()
+  @Column({ type: 'uuid' })
   restaurantId: string;
 
   @CreateDateColumn()

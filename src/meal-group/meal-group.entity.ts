@@ -18,7 +18,7 @@ export class MealGroup {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   createdById: string;
 
   @ManyToOne(() => User, (user) => user.mealGroups)

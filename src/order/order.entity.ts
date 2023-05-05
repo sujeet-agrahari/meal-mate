@@ -18,13 +18,13 @@ export class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   mealGroupId: string;
 
   @ManyToOne(() => MealGroup)
   mealGroup: MealGroup;
 
-  @Column()
+  @Column({ type: 'uuid' })
   restaurantId: string;
 
   @ManyToOne(() => Restaurant)
@@ -36,7 +36,7 @@ export class Order {
   @OneToOne(() => OrderBill, (orderBill) => orderBill.order)
   orderBill: OrderBill;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'date', default: () => 'CURRENT_DATE' })
   orderDate: Date;
 
   @CreateDateColumn()

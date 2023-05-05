@@ -1,8 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsPositive, IsUUID } from 'class-validator';
+import { IsOptional, IsPositive, IsUUID } from 'class-validator';
 
 export class CreateOrderDishDto {
   @ApiProperty()
+  @IsOptional()
   @IsUUID()
   orderId: string;
 

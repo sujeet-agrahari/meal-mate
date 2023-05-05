@@ -11,8 +11,11 @@ export class OrderDishService {
     private readonly orderDishRepository: Repository<OrderDish>,
   ) {}
 
-  async createOrderDish(orderDish: CreateOrderDishDto): Promise<OrderDish> {
-    return this.orderDishRepository.save(orderDish);
+  async createOrderDish(
+    orderId: string,
+    orderDish: CreateOrderDishDto,
+  ): Promise<OrderDish> {
+    return this.orderDishRepository.save({ orderId, ...orderDish });
   }
 
   async getOrderDish(orderId: string): Promise<OrderDish> {

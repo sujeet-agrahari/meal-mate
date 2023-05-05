@@ -20,7 +20,7 @@ export class OrderService {
       where: {
         id: orderId,
       },
-      relations: ['orderBill', 'orderDishes', 'restaurant'],
+      relations: ['orderBill', 'orderDishes', 'restaurant', 'orderDishes.dish'],
     });
   }
 }

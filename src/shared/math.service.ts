@@ -25,6 +25,11 @@ export class MathService {
     return this;
   }
 
+  multiplyAndAdd(amount: number, quantity: number): MathService {
+    this.total += amount * quantity;
+    return this;
+  }
+
   divide(value: number): MathService {
     if (value === 0) {
       throw new Error('Cannot divide by zero');
@@ -69,7 +74,13 @@ export class MathService {
   getTotal(): number {
     return parseFloat(this.total.toFixed(2));
   }
+
   createInstance(): MathService {
     return new MathService();
+  }
+
+  reset(): MathService {
+    this.total = 0;
+    return this;
   }
 }

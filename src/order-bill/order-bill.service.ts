@@ -6,8 +6,6 @@ import { CreateOrderBillDto } from './dto/create-order-bill.dto';
 import { OrderService } from 'src/order/order.service';
 import { MathService } from '../shared/math.service';
 import { AmountType } from './types/discount.type';
-import { Order } from 'src/order/order.entity';
-import { OrderDish } from 'src/order/order-dish.entity';
 
 @Injectable()
 export class OrderBillService {
@@ -35,10 +33,18 @@ export class OrderBillService {
       throw new BadRequestException('Invalid order ID');
     }
 
+    // create new instance of math service before to avoid multiple instance creation in the loop
+    const orderDishesTotalPriceCalculator = this.mathService.createInstance();
     const totalOrderedDishesPrice = order.orderDishes.reduce(
-      (totalDishPrice, orderedDish) => totalDishPrice + orderedDish.dish.price,
+      (totalPrice, orderedDish) =>
+        orderDishesTotalPriceCalculator
+          .setInitialAmount(totalPrice)
+          .multiplyAndAdd(orderedDish.dish.price, orderedDish.quantity)
+          .getTotal(),
       0,
     );
+
+    // this uses original math service instance
     const calculatedNetAmount = this.mathService
       .setInitialAmount(totalOrderedDishesPrice)
       .applyCharge(orderBill.tax, AmountType.PERCENTAGE)

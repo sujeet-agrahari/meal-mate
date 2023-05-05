@@ -8,6 +8,6 @@ export class MemberBillShareController {
   ) {}
   @Post()
   async getMembersBillShare(@Param('orderId') orderId: string) {
-    return this.memberBillShareService.calculateMembersBillShare(orderId);
+    return this.memberBillShareService.getMembersBillShare(orderId);
   }
 }
